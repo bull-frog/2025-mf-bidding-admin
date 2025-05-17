@@ -9,11 +9,12 @@ import TheWelcome from './components/TheWelcome.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
+      <RouterLink to="/other">Sub Page</RouterLink>
     </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <RouterView />
   </main>
 </template>
 
