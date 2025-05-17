@@ -7,7 +7,7 @@ const password = ref('');
 const isLoading = ref(false);
 const errorMessage = ref('');
 
-const { proxy } = getCurrentInstance();
+const { proxy } = (getCurrentInstance() as any);
 const API_BASE_URL = proxy.$apiBaseUrl;
 
 const signin = async () => {

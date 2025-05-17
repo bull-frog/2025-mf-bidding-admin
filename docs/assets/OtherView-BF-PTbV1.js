@@ -1,1 +1,0 @@
-import{d as o,c as s,a as t,o as a,_ as n}from"./index-B2XOOGrD.js";const r={class:"other-view"},c=o({__name:"OtherView",setup(d){return(_,e)=>(a(),s("div",r,e[0]||(e[0]=[t("h1",null,"Sub Page",-1),t("p",null,"Welcome to the Bidding Admin Sub Page.",-1)])))}}),l=n(c,[["__scopeId","data-v-f608dd4c"]]);export{l as default};

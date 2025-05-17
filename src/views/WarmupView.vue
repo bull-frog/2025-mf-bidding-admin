@@ -6,7 +6,7 @@ import axios from 'axios';
 const router = useRouter();
 const message = ref('APIサーバーが起動するのを待っています。これには１分以上かかる場合があります...');
 
-const { proxy } = getCurrentInstance();
+const { proxy } = getCurrentInstance() as any;
 const API_BASE_URL = proxy.$apiBaseUrl;
 
 onMounted(async () => {

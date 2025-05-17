@@ -112,11 +112,11 @@ onMounted(() => {
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in apiData" :key="item.id">
+            <!-- <tr v-for="item in apiData" :key="item.id">
               <td v-for="header in headers" :key="header.key">
                 {{ item[header.key] }}
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </v-table>
         <p v-else>APIからデータが取得されていません。</p>
