@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     outDir: 'docs'
   },
-  base: process.env.NODE_ENV === 'production'
+  base: process.env.NODE_ENV !== 'development'
     ? '/2025-mf-bidding-admin/' // GitHub Pagesのルートパス
     : '/',
   resolve: {
