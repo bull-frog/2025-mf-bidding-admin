@@ -12,6 +12,21 @@ const routes = [
     path: '/other',
     name: 'other',
     component: () => import('../views/OtherView.vue') // 遅延ロード
+  },
+  {
+    path: '/warmup',
+    name: 'warmup',
+    component: () => import('../views/WarmupView.vue') // 遅延ロード
+  },
+  {
+    path: '/control',
+    name: 'control',
+    component: () => import('../views/ControlView.vue') // 遅延ロード
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: () => import('../views/SigninView.vue') // 遅延ロード
   }
 ]
 

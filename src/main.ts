@@ -13,6 +13,8 @@ const app = createApp(App)
 app.use(router) // Vue Routerをアプリケーションに追加
 app.use(vuetify) // Vuetifyをアプリケーションに追加
 
+app.config.globalProperties.$apiBaseUrl = 'https://two025-mf-bidding-api.onrender.com' // APIのベースURLをグローバルプロパティとして設定
+
 app.use(createPinia())
 
 app.mount('#app')
