@@ -15,6 +15,9 @@ export default defineConfig({
   build: {
     outDir: 'docs'
   },
+  base: process.env.NODE_ENV === 'production'
+    ? '/2025-mf-bidding-admin/' // GitHub Pagesのルートパス
+    : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
