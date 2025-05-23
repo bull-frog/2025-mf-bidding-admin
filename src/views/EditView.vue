@@ -45,7 +45,7 @@ const handlePaste = (index, event) => {
 	// 改行で分割して行ごとの配列を作成
 	const rows = text.trim().split('\n');
 
-	items.value[rowIndex] = rows[0].split('\t').map((cell) => parseInt(cell.trim()));
+	items.value[rowIndex] = rows[0].split('\t').map((cell) => parseFloat(cell.trim()));
 
 
 }

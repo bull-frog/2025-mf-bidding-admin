@@ -32,7 +32,7 @@ onMounted(() => {
 			</tr>
 			<tr v-for="(company, companyIndex) in gameData.companies" :key="companyIndex">
 				<td>{{ company }}</td>
-				<td>{{ calculateBenefit(companyIndex, gameData) }}</td>
+				<td>{{ calculateBenefit(companyIndex, gameData).toFixed(1) }}</td>
 			</tr>
 		</table>
 	</div>
