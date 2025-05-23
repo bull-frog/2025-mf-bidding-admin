@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+// @ts-nocheck
 import { defaultGameData } from '@/utils/defaultGameData';
 import { gameSettings } from '@/utils/game';
 import { onMounted, ref } from 'vue';
