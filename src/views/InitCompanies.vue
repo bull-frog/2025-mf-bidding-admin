@@ -1,9 +1,7 @@
 <script setup lang="ts">
-
-import { defaultGameData } from '@/utils/defaultGameData';
-import { gameSettings } from '@/utils/game';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { defaultGameData } from '@/utils/defaultGameData';
 
 const gameId = ref(0);
 const gameData = ref(defaultGameData);
@@ -12,36 +10,31 @@ const router = useRouter();
 
 onMounted(() => {
 	gameId.value = parseInt(localStorage.getItem('gameId') as string) || 0;
-	gameData.value = JSON.parse(localStorage.getItem(`gameData${gameId.value}`) || '{}');
+	gameData.value = JSON.parse(localStorage.getItem(`gameData${gameId.value}`) || router.push('/') as any);
+	console.log(gameData.value);
 });
 
-const newGame = () => {
-	gameId.value++;
-	localStorage.setItem('gameId', gameId.value.toString());
-	localStorage.setItem(`gameData${gameId.value}`, JSON.stringify(defaultGameData));
-	router.push('/init');
+const saveCompanyNames = () => {
+	localStorage.setItem(`gameData${gameId.value}`, JSON.stringify(gameData.value));
+	router.push('/');
 };
-
 </script>
 
 <template>
 	<div class="container">
 		<div class="header">
-			<h1>競争入札ゲーム</h1>
-			<a class="button-link" @click="newGame">新規ゲーム</a>
+			<h1>会社名</h1>
+			<a class="button-link" @click="saveCompanyNames">OK</a>
 		</div>
-
-		<div class="controls">
-			<template v-for="(round, index) in gameSettings.rounds" :key="index">
-				<div class="game-control">
-					<h2>{{ round }}</h2>
-					<RouterLink :to="`/edit/${index}`" class="button-link">入力</RouterLink>
-					<RouterLink :to="`/show/${index}`" class="button-link">結果表示</RouterLink>
+		<div>
+			<template v-for="(company, index) in gameData.companies" :key="index">
+				<div>
+					<span>会社{{ ['a', 'b', 'c', 'd', 'e', 'f', 'g'][index] }}</span>
+					<input type="text" v-model="gameData.companies[index]" />
 				</div>
+				<span></span>
 			</template>
 		</div>
-
-		<RouterLink to="/current" class="button-link">現在の収支</RouterLink>
 	</div>
 </template>
 
@@ -115,15 +108,6 @@ h1 {
 	background: #EEE;
 }
 
-h2 {
-	color: #000;
-	font-family: "Noto Sans JP", sans-serif;
-	font-size: 42px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
-}
-
 p {
 	color: #000;
 	font-family: "Noto Sans JP", sans-serif;
@@ -131,5 +115,18 @@ p {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+input {
+	display: inline;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px;
+	font-family: "Noto Sans JP", sans-serif;
+	font-size: 30px;
+}
+
+span {
+	font-size: 30px;
 }
 </style>

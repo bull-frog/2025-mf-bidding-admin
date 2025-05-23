@@ -4,14 +4,14 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
-import { createVuetify } from 'vuetify'
-import 'vuetify/styles' // Vuetifyのグローバルスタイルシートをインポート
+// import { createVuetify } from 'vuetify'
+// import 'vuetify/styles' // Vuetifyのグローバルスタイルシートをインポート
 
-const vuetify = createVuetify()
+// const vuetify = createVuetify()
 
 const app = createApp(App)
 app.use(router) // Vue Routerをアプリケーションに追加
-app.use(vuetify) // Vuetifyをアプリケーションに追加
+// app.use(vuetify) // Vuetifyをアプリケーションに追加
 
 app.config.globalProperties.$apiBaseUrl = 'https://two025-mf-bidding-api.onrender.com' // APIのベースURLをグローバルプロパティとして設定
 

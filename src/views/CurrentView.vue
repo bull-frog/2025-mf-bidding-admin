@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
 import { defaultGameData } from '@/utils/defaultGameData';
 import { gameSettings } from '@/utils/game';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { calculateBenefit } from '@/utils/calculateBenefit';
 
 const gameId = ref(0);
 const gameData = ref(defaultGameData);
@@ -15,33 +15,25 @@ onMounted(() => {
 	gameData.value = JSON.parse(localStorage.getItem(`gameData${gameId.value}`) || '{}');
 });
 
-const newGame = () => {
-	gameId.value++;
-	localStorage.setItem('gameId', gameId.value.toString());
-	localStorage.setItem(`gameData${gameId.value}`, JSON.stringify(defaultGameData));
-	router.push('/init');
-};
 
 </script>
 
 <template>
 	<div class="container">
 		<div class="header">
-			<h1>競争入札ゲーム</h1>
-			<a class="button-link" @click="newGame">新規ゲーム</a>
+			<h1>現在の収支</h1>
+			<RouterLink to="/" class="button-link">戻る</RouterLink>
 		</div>
-
-		<div class="controls">
-			<template v-for="(round, index) in gameSettings.rounds" :key="index">
-				<div class="game-control">
-					<h2>{{ round }}</h2>
-					<RouterLink :to="`/edit/${index}`" class="button-link">入力</RouterLink>
-					<RouterLink :to="`/show/${index}`" class="button-link">結果表示</RouterLink>
-				</div>
-			</template>
-		</div>
-
-		<RouterLink to="/current" class="button-link">現在の収支</RouterLink>
+		<table>
+			<tr>
+				<th>会社</th>
+				<th>利益総和</th>
+			</tr>
+			<tr v-for="(company, companyIndex) in gameData.companies" :key="companyIndex">
+				<td>{{ company }}</td>
+				<td>{{ calculateBenefit(companyIndex, gameData) }}</td>
+			</tr>
+		</table>
 	</div>
 </template>
 

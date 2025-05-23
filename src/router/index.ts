@@ -1,38 +1,39 @@
 // router/index.js
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import InitCompanies from '@/views/InitCompanies.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/other',
-    name: 'other',
-    component: () => import('../views/OtherView.vue') // 遅延ロード
-  },
-  {
-    path: '/warmup',
-    name: 'warmup',
-    component: () => import('../views/WarmupView.vue') // 遅延ロード
-  },
-  {
-    path: '/control',
-    name: 'control',
-    component: () => import('../views/ControlView.vue') // 遅延ロード
-  },
-  {
-    path: '/signin',
-    name: 'signin',
-    component: () => import('../views/SigninView.vue') // 遅延ロード
-  }
+	{
+		path: '/',
+		name: 'home',
+		component: HomeView
+	},
+	{
+		path: '/init',
+		name: 'init',
+		component: InitCompanies
+	},
+	{
+		path: '/edit/:id',
+		name: 'edit',
+		component: () => import('../views/EditView.vue'),
+	},
+	{
+		path: '/show/:id',
+		name: 'show',
+		component: () => import('../views/ShowResultView.vue'),
+	},
+	{
+		path: '/current',
+		name: 'current',
+		component: () => import('../views/CurrentView.vue'),
+	}
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(), // GitHub Pages のような静的ホスティング環境での使用に適したハッシュモード
-  routes
+	history: createWebHashHistory(), // GitHub Pages のような静的ホスティング環境での使用に適したハッシュモード
+	routes
 })
 
 export default router
